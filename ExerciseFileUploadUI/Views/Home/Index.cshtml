@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<SharedProjects.MyDocuments>
+
+@if (Model != null)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name </th>
+                <th>Image</th>
+                <th>dowload link</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                string Base64url = $"data:{item.ContentType};base64,{item.Base64stringFile}";
+
+                <tr>
+
+                    <td>
+                        <strong>@item.FileName </strong>
+                    </td>
+                    <td><a href="@Base64url" download="@item.FileName">Download</a></td>
+                    <td>
+
+                        @if (item.ContentType.Contains("image", StringComparison.OrdinalIgnoreCase))
+                        {
+
+
+                            <img src="@Base64url" width="200" height="200" />
+
+                        }
+                        else
+                        {
+
+                            <object>
+                                <embed id="pdfID" type="text/html" width="200" height="200" src="@Base64url" />
+                            </object>
+
+
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
