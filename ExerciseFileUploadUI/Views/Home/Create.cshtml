@@ -1,20 +1,22 @@
-﻿@{
+﻿@addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
+@{
     ViewData["Title"] = "Create";
 }
 
 <div>
+    <div asp-validation-summary="All" ></div>
     <label> Single File Upload</label>
     <form method="post" action="@Url.Action("Create","Home")" enctype="multipart/form-data">
-        @Html.ValidationSummary()
+       
         <input type="file" name="formFile"  id="formFile" />
-        <button type="submit" class="btn btn-primary">Submits</button>
+        <button type="submit" class="btn btn-primary">Add File</button>
     </form>
 
     <label> Multiple File Upload</label>
     <form method="post" action="@Url.Action("CreateMultiple","Home")" enctype="multipart/form-data">
-        @Html.ValidationSummary()
+        
         <input type="file" name="formFile" multiple id="formFile" />
-        <button type="submit" class="btn btn-primary">Submits</button>
+        <button type="submit" class="btn btn-primary">Add Files</button>
     </form>
 </div>
 

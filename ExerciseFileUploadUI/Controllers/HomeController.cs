@@ -87,7 +87,7 @@ namespace ExerciseFileUploadUI.Controllers
                     
                     if (result.IsSuccessStatusCode)
                     {
-                        ModelState.AddModelError("", "Saved Success");
+                        TempData["MessageForUser"] = $" Your File '{uploadDocument.formFile.FileName}' added Successfully";
                     }
                     else
                     {
@@ -138,7 +138,7 @@ namespace ExerciseFileUploadUI.Controllers
 
                     if (result.IsSuccessStatusCode)
                     {
-                        ModelState.AddModelError("", "Saved Success");
+                        TempData["MessageForUser"] = $" Your '{uploadDocument.formFile.Count}' Files added Successfully";
                     }
                     else
                     {

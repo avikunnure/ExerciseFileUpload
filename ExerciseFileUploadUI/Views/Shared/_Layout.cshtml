@@ -31,6 +31,13 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            @if (TempData["MessageForUser"] != null)
+            {
+                string message = TempData["MessageForUser"].ToString();
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @message
+                </div>
+            }
             @RenderBody()
         </main>
     </div>
